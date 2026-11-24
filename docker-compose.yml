@@ -1,0 +1,43 @@
+name: expenses
+
+services:
+  # ---------- Основной сервис (CRUD + база) ----------
+  main_service:
+    build: ./main_service
+    container_name: expenses-main
+    ports:
+      - "8000:8000"
+    volumes:
+      - expenses_data:/app/data
+      - ./main_service/data:/previous:ro
+    environment:
+      - PYTHONUNBUFFERED=1
+    restart: unless-stopped
+
+  # ---------- Сервис отчётов ----------
+  reports_service:
+    build: ./reports_service
+    container_name: expenses-reports
+    ports:
+      - "8001:8001"
+    environment:
+      - PYTHONUNBUFFERED=1
+    depends_on:
+      - main_service
+    restart: unless-stopped
+
+  # ---------- Фронтенд (простой веб-сервер) ----------
+  frontend:
+    image: nginx:alpine
+    container_name: expenses-frontend
+    ports:
+      - "8080:80"
+    volumes:
+      - ./frontend:/usr/share/nginx/html:ro
+    depends_on:
+      - main_service
+      - reports_service
+    restart: unless-stopped
+
+volumes:
+  expenses_data:

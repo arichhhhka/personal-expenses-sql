@@ -1,0 +1,375 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  background: #fff6f9;
+  color: #1f2937;
+  line-height: 1.45;
+  padding: 24px 16px;
+}
+
+.container {
+  max-width: 1240px;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 18px;
+  margin: 0 auto;
+}
+
+h1 {
+  grid-column: 1 / -1;
+  text-align: center;
+  margin: 4px 0 8px;
+  font-size: 26px;
+  font-weight: 700;
+  color: #422337;
+}
+
+h2 {
+  font-size: 19px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #422337;
+}
+
+.card {
+  background: #ffffff;
+  border: 1px solid #eed7e1;
+  padding: 20px;
+  grid-column: span 6;
+  min-width: 0;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+}
+
+.categories-card {
+  grid-column: span 4;
+}
+
+.expense-form {
+  grid-column: span 8;
+}
+
+.card h2 {
+  text-align: center;
+  margin-bottom: 14px;
+}
+
+input, select, label {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.top-hint {
+  margin-bottom: 14px;
+}
+
+.hint {
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: flex-end;
+  margin-bottom: 14px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  font-size: 13px;
+  font-weight: 500;
+  color: #374151;
+  gap: 5px;
+}
+
+input, select, button {
+  font-size: 14px;
+  padding: 9px 12px;
+  border: 1px solid #dbc6d0;
+  background: #fff;
+  color: #422337;
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: #bc6288;
+  box-shadow: 0 0 0 3px rgba(188, 98, 136, 0.12);
+}
+
+button {
+  background: #f4c3d7;
+  color: #542037;
+  border: none;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s ease;
+}
+
+button:hover {
+  background: #ecabc6;
+}
+
+button.secondary {
+  background: #fae7ef;
+  color: #743650;
+}
+
+button.secondary:hover {
+  background: #f5d5e3;
+}
+
+button.danger {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+button.danger:hover {
+  background: #fecaca;
+}
+
+button.small {
+  padding: 6px 10px;
+  font-size: 12px;
+}
+
+/* Список категорий */
+.list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.list li {
+  display: inline-flex;
+  flex-wrap: wrap;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px 6px 12px;
+  background: #fff8fb;
+  border: 1px solid #eed7e1;
+  font-size: 14px;
+}
+
+/* Карточки расходов */
+.expenses-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.expense-item {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 16px;
+  border: 1px solid #eed7e1;
+  background: #fffafb;
+}
+
+.expense-main {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+}
+
+.expense-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.category-badge {
+  overflow-wrap: anywhere;
+  background: #fceaf1;
+  color: #85405e;
+  border: 1px solid #edcbd9;
+  padding: 2px 9px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.expense-desc {
+  font-size: 14px;
+  color: #1f2937;
+  word-break: break-word;
+}
+
+.expense-side {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 100%;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.expense-amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: #422337;
+  white-space: nowrap;
+}
+
+.expense-actions {
+  display: flex;
+  gap: 6px;
+}
+
+/* Вид отчёта */
+.report-view {
+  margin-top: 12px;
+}
+
+.report-summary-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 16px 18px;
+  background: #fff0f6;
+  border: 1px solid #ebc8d8;
+  margin-bottom: 14px;
+}
+
+.report-summary-label {
+  font-size: 14px;
+  color: #7e3657;
+  font-weight: 600;
+}
+
+.report-summary-total {
+  font-size: 24px;
+  font-weight: 700;
+  color: #602c45;
+}
+
+.report-categories {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.report-cat-card {
+  padding: 12px 14px;
+  border: 1px solid #eed7e1;
+  background: #ffffff;
+}
+
+.report-cat-header {
+  display: flex;
+  flex-wrap: wrap;
+  overflow-wrap: anywhere;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 7px;
+  font-size: 14px;
+}
+
+.report-cat-name {
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.report-cat-value {
+  font-weight: 700;
+  color: #422337;
+  white-space: nowrap;
+}
+
+.report-cat-share {
+  color: #6b7280;
+  font-weight: 500;
+  margin-left: 6px;
+  font-size: 13px;
+}
+
+.progress-track {
+  width: 100%;
+  height: 7px;
+  background: #f3f4f6;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: #bc6288;
+}
+
+/* Уведомления */
+.message {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 12px 16px;
+  color: #fff;
+  font-size: 14px;
+  max-width: 360px;
+  z-index: 100;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.message.ok {
+  background: #16a34a;
+}
+
+.message.error {
+  background: #dc2626;
+}
+
+.message.hidden {
+  display: none;
+}
+
+@media (max-width: 800px) {
+  .container {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .card {
+    grid-column: 1;
+  }
+}
+
+@media (max-width: 640px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .expense-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .expense-side {
+    width: 100%;
+    justify-content: space-between;
+  }
+}

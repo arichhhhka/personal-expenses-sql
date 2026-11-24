@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Учёт личных расходов</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Учёт личных расходов</h1>
+
+    <section class="card categories-card">
+      <h2>Категории</h2>
+      <p class="hint top-hint">
+        Добавляйте и переименовывайте категории. Категорию с существующими расходами удалить нельзя.
+      </p>
+      <div class="form-row">
+        <input type="text" id="categoryName" maxlength="50" placeholder="Название категории">
+        <button onclick="addCategory()">Добавить</button>
+      </div>
+      <ul id="categoriesList" class="list"></ul>
+    </section>
+
+    <section class="card expense-form">
+      <h2 id="expenseTitle">Новый расход</h2>
+      <p class="hint top-hint">
+        Укажите положительную сумму, дату, выберите категорию и при необходимости добавьте комментарий.
+      </p>
+      <div class="form-grid">
+        <label>
+          Сумма, ₽
+          <input type="number" id="expAmount" min="0.01" step="0.01" placeholder="0.00">
+        </label>
+        <label>
+          Дата
+          <input type="date" id="expDate">
+        </label>
+        <label>
+          Категория
+          <select id="expCategory">
+            <option value="" disabled selected>Выберите...</option>
+          </select>
+        </label>
+        <label>
+          Комментарий
+          <input type="text" id="expDescription" maxlength="200" placeholder="Необязательно">
+        </label>
+      </div>
+      <button id="saveButton" onclick="saveExpense()">Добавить расход</button>
+      <button id="cancelButton" class="secondary" hidden onclick="resetExpense()">Отмена</button>
+    </section>
+
+    <section class="card">
+      <h2>История расходов</h2>
+      <div class="form-grid">
+        <label>
+          Период
+          <select id="historyPeriod" onchange="choosePeriod('history', this.value)">
+            <option value="all">За всё время</option>
+            <option value="week">За неделю</option>
+            <option value="1">За месяц</option>
+            <option value="6">За 6 месяцев</option>
+            <option value="12">За год</option>
+            <option value="custom">Свои даты</option>
+          </select>
+        </label>
+        <label>
+          С
+          <input type="date" id="historyFrom" onchange="manualPeriod('history')">
+        </label>
+        <label>
+          По
+          <input type="date" id="historyTo" onchange="manualPeriod('history')">
+        </label>
+        <label>
+          Категория
+          <select id="historyCategory">
+            <option value="">Все</option>
+          </select>
+        </label>
+      </div>
+      <button onclick="loadExpenses()">Показать историю</button>
+      <button id="historyHide" hidden class="secondary" onclick="showResult('history', false)">Скрыть</button>
+      <div id="historyResultBox" hidden>
+        <div id="expensesList" class="expenses-list"></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Отчёт</h2>
+      <div class="form-grid">
+        <label>
+          Период
+          <select id="reportPeriod" onchange="choosePeriod('report', this.value)">
+            <option value="all">За всё время</option>
+            <option value="week">За неделю</option>
+            <option value="1">За месяц</option>
+            <option value="6">За 6 месяцев</option>
+            <option value="12">За год</option>
+            <option value="custom">Свои даты</option>
+          </select>
+        </label>
+        <label>
+          С
+          <input type="date" id="reportFrom" onchange="manualPeriod('report')">
+        </label>
+        <label>
+          По
+          <input type="date" id="reportTo" onchange="manualPeriod('report')">
+        </label>
+        <label>
+          Категория
+          <select id="reportCategory">
+            <option value="">Все</option>
+          </select>
+        </label>
+      </div>
+      <button onclick="loadReport()">Сформировать отчёт</button>
+      <button id="reportHide" hidden class="secondary" onclick="showResult('report', false)">Скрыть</button>
+      <div id="reportResultBox" hidden>
+        <div id="reportResult" class="report-view"></div>
+      </div>
+    </section>
+
+    <div role="status" id="message" class="message hidden"></div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
