@@ -68,7 +68,7 @@ docker compose up -d
 В базе SQLite две таблицы. В таблице `categories` хранятся номер и название категории. В таблице `expenses` каждая трата связана с одной категорией через поле `category_id`. Поэтому при переименовании категории её новое название появляется и у ранее добавленных расходов. Все суммы учитываются в рублях. 
 
 ## Пример работы
-<img width="1274" height="925" alt="image" src="https://github.com/user-attachments/assets/433bb487-b303-4ad7-b93a-1ec83e1dd462" />
+<img width="1266" height="921" alt="image" src="https://github.com/user-attachments/assets/bb8c1d98-f47e-4a57-832f-677367eeb254" />
 
 ## Диагностические сообщения
 
